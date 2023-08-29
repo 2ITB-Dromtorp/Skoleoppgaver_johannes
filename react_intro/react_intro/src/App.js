@@ -7,7 +7,7 @@ function App() {
 
   let isLoggedIn;
   let content;
-  isLoggedIn = true;
+  isLoggedIn = false;
 
 if (isLoggedIn) {
   content = <MyButton />;

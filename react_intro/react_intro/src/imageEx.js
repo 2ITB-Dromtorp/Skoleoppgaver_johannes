@@ -1,5 +1,5 @@
 const user = {
-    name: 'Matheo Kønn',
+    name: 'Matheo Køhn',
     imageUrl: 'https://i.imgur.com/yXOvdOSs.jpg',
     imageSize: 90,
   };
