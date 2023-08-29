@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import MyButton from './myButton';
-import Profile from './ImageEx';
+import MyButton from './mybutton';
+import Profile from './imageEx';
 
 // Dette er en kommentar
 
