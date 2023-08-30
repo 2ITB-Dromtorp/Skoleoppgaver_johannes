@@ -3,6 +3,11 @@ import './App.css';
 import MyButton from './mybutton';
 import Profile from './imageEx';
 
+
+
+
+
+
 // Dette er en kommentar
 
 function App() {

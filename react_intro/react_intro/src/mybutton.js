@@ -1,5 +1,5 @@
 import './App.css';
-
+import {useState} from 'react';
 
 function clickButton() {
   console.log('Button clicked');
@@ -29,14 +29,16 @@ function Uselist() {
 }  
 
 export default function MyButton() {
+  const [count, setCount] = useState(0);
 
-  
-    return (
-      <div>
-        <h1>Welcome to my app</h1>
-        <button className='button' onClick={clickButton}>I'm a button</button>
-        <Uselist />
-      </div>
-    );
+  function handleClick() {
+    setCount(count + 1);
   }
+
+  return (
+    <button onClick={handleClick}>
+      Clicked {count} times
+    </button>
+  );
+}
 
