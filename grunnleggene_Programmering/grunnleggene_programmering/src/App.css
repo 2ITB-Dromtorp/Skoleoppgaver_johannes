@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-image: url("https://media.castforward.de/foto/24048.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjZmV0IiwiYXVkIjoiY2ZldCIsImlhdCI6MTY0MjUyNTYyMiwiZXhwIjoxNjQyNTMyODIyLCJkYXRhIjp7ImNkbl9zY29wZSI6ImZvdG8iLCJjZG5faWQiOjI0MDQ4LCJ1c2VyX3Byb2ZpbGVJZCI6MCwibm9JbmRleCI6ZmFsc2V9fQ.yVCLtQRlbW4dsJVWy-C3tCffTFxABiMU5hb_p1eNqQ4");
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -37,10 +37,9 @@
 }
 
 .oppgavebox {
-  border: solid white 1 px;
+  background-color: rgba(58, 118, 9, 0.95);
+  text-shadow: 2px 2px 5px red;
+  min-width: 1223px;
+  border: solid white 1px;
 }
 
-
-.H2 {
-  align-items: center;
-}
