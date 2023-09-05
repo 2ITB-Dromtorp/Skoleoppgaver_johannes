@@ -36,10 +36,26 @@
   }
 }
 
-.oppgavebox {
+.oppgavebox1{
   background-color: rgba(58, 118, 9, 0.95);
   text-shadow: 2px 2px 5px red;
   min-width: 1223px;
   border: solid white 1px;
 }
 
+.oppgavebox2{
+  background-color: rgba(188, 155, 253, 0.95);
+  text-shadow: 2px 2px 5px red;
+  min-width: 1223px;
+  border: solid white 1px;
+}
+
+h1 {
+  background-color: #61dafb;
+  text-shadow: 2px 2px 5px darkgreen;
+  min-height: 100px;
+  margin-top: auto;
+  margin-bottom: auto;
+  border: solid white 1px;
+  align-items: center;
+}
