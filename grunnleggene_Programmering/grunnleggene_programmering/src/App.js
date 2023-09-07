@@ -6,6 +6,7 @@ import Oppgave1 from './oppgave1';
 import Oppgave2 from './oppgave2a';
 import Treangel from './oppgave2b';
 import Arial from './oppgave2c';
+import Norsk from './oppgave 3';
 
  
 
@@ -20,6 +21,7 @@ function App() {
         <Oppgave2/>
         <Treangel/>
         <Arial/>
+        <Norsk/>
 
 
       
