@@ -1,45 +1,31 @@
 
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-class RectangleAreaCalculator extends Component {
-  constructor() {
-    super();
-    this.state = {
-      length: 8,
-      width: 8,
-      area: null,
-    };
+function RektangelAreaCalculator() {
+
+  const [inputNumber1, setInputNumber] = useState(8)
+  const [inputNumber2, setInputNumber2] = useState(8)
+
+  function handleClick() {
+    
+
+    //SsetArea(8);
   }
 
-  calculateArea = () => {
-    const { length, width } = this.state;
-    const area = length * width;
-    this.setState({ area });
-  };
 
-  
-  render() {
-    return (
-      <div>
-        <h1>Rectangle Area Calculator</h1>
-        <p>Length: {this.state.length}</p>
-        <p>Width: {this.state.width}</p>
-        <p>Area: {this.state.area === null ? 'Calculate area' : this.state.area}</p>
-        <button onClick={this.calculateArea}>Calculate Area</button>
+
+
+  return (
+    <div className='oppgavebox2'>
+        <h1 className='op2h1'>rektangel Area Calculator (oppgave 2 a)</h1>
+        <p>Length:</p>
+        <input type="number" value={inputNumber1}/>
+        <p>Width: </p>
+        <input type="number" value={inputNumber2}/> <br></br>
+        <p>Areal: {inputNumber1 * inputNumber2} </p>
       </div>
-    );
-  }
+  )
 }
 
-  
-  export default function Oppgave2() {
-    return (
-      <div>
-        <h1>Oppgave 2</h1>
-        <header className='App-header'>
-        <RectangleAreaCalculator />
-        </header>
-      </div>
-    );
-  }
+export default RektangelAreaCalculator;
   

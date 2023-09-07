@@ -43,19 +43,65 @@
   border: solid white 1px;
 }
 
-.oppgavebox2{
-  background-color: rgba(188, 155, 253, 0.95);
-  text-shadow: 2px 2px 5px red;
-  min-width: 1223px;
-  border: solid white 1px;
-}
+
 
 h1 {
   background-color: #61dafb;
   text-shadow: 2px 2px 5px darkgreen;
   min-height: 100px;
+  min-width: 1223px;
   margin-top: auto;
   margin-bottom: auto;
   border: solid white 1px;
   align-items: center;
 }
+
+.op2h1 {
+  background-color: #EA11C9;
+  text-shadow: 2px 2px 5px darkgreen;
+  min-height: 100px;
+  min-width: 1223px;
+  margin-top: auto;
+  margin-bottom: auto;
+  border: solid white 1px;
+  align-items: center;
+}
+
+
+.op2c1 {
+  background-color: #581845;
+  text-shadow: 2px 2px 5px #797D7F;
+  min-height: 100px;
+  min-width: 1223px;
+  margin-top: auto;
+  margin-bottom: auto;
+  border: solid white 1px;
+  align-items: center;
+}
+
+
+.op2c2 {
+  background-color: #EA1E11;
+  text-shadow: 2px 2px 5px #797D7F;
+  min-height: 100px;
+  min-width: 1223px;
+  margin-top: auto;
+  margin-bottom: auto;
+  border: solid white 1px;
+  align-items: center;
+}
+
+.oppgavebox2{
+  background-image: linear-gradient(to right, rgba(255,0,0,0.95) ,rgba(255,165,0,0.95));;
+  text-shadow: 2px 2px 5px red;
+  min-width: 1223px;
+  border: solid white 1px;
+}
+
+.oppgavebox3{
+  background-image: linear-gradient(to right, rgba(255,0,0,0.96),rgba(255, 165, 0, 0.96),rgba(255,255,0,0.96),rgba(0,128,0,0.96),	rgba(0,0,255,0.96),rgba(75,0,130,0.96),rgba(238,130,238,0.96));
+  text-shadow: 2px 2px 5px red;
+  min-width: 1223px;
+  border: solid white 1px;
+}
+
