@@ -7,7 +7,7 @@ import Oppgave2 from './oppgave2a';
 import Treangel from './oppgave2b';
 import Arial from './oppgave2c';
 import Norsk from './oppgave 3';
-
+import Guess from './oppgave 4';
  
 
 function App() {
@@ -22,6 +22,7 @@ function App() {
         <Treangel/>
         <Arial/>
         <Norsk/>
+        <Guess/>
 
 
       

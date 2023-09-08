@@ -1,26 +1,36 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 
-function op3() {
-    const [count, setCount] = useState(0);
-  
-    function handleClick() {
-      setCount(count + 1);
-    }
-  
-    return (
-        <div>
-        <h1>are you Swedish or Norweigan</h1>
-      <button onClick={handleClick}>
-        Clicked {count} times
-      </button>
-      </div>
-    )
+
+function Land() {
+
+  const [inputNorsk, setInputNorsk] = useState('')
+  const [inputSvensk, setInputSvensk] = useState('')
+
+  function handleClick() {
+    
+
   }
 
+  const handleChange = (event) => {
+    setInputNorsk(event.target.value)
+  };
 
+  const handleChange2 = (event) => {
+    setInputSvensk(event.target.value)
+  };
 
+  return (
+    <div className='oppgavebox4'>
+        <h1 className='op31'>oppgave 3</h1>
+        <h1 className='op32'>er du Norsk eller Svensk? (skrive N for nosk eller S for svensk)</h1>
+        <p>Length:</p>
+        <input type="text" value={inputNorsk} onChange={handleChange}/>
+        <p>Width: </p>
+        <input type="text" value={inputSvensk} onChange={handleChange2}/> <br></br>
+        <p>du er: {inputNorsk * inputSvensk} </p>
+      </div>
+  )
+}
 
-
-
-export default function op3;
+export default Land;
