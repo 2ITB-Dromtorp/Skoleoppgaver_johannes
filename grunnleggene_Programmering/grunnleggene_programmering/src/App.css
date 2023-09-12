@@ -108,6 +108,7 @@ h1 {
 .oppgavebox4{
   background-image: url(https://i.pinimg.com/736x/42/4f/a0/424fa0924e05f7dc8c1995529073f551--gnomes-hats.jpg);
   background-size: 100%;
+  opacity: 0.96;
   background-position: center;
   text-shadow: 2px 2px 5px red;
   min-width: 1223px;
@@ -135,4 +136,10 @@ h1 {
   margin-bottom: auto;
   border: solid white 1px;
   align-items: center;
+}
+
+
+input[type=submit] {
+  background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+  padding: 16px 32px;
 }
