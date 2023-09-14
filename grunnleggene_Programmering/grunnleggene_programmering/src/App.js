@@ -8,6 +8,8 @@ import Treangel from './oppgave2b';
 import Arial from './oppgave2c';
 import Norsk from './oppgave 3';
 import Guess from './oppgave 4';
+import Op5 from './oppgave 5';
+import Incdec from './pil';
  
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
         <Arial/>
         <Norsk/>
         <Guess/>
+        <Op5/>
+        <Incdec/>
 
 
       
