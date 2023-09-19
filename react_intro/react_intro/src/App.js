@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import MyButton from './mybutton';
 import Profile from './imageEx';
@@ -28,8 +28,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         
-        <h1> React Intro </h1>
+        <h1>pliz</h1>
         
+        {content}
 
       </header>
     </div>
