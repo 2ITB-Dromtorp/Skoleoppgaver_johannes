@@ -1,0 +1,80 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+ 
+body {
+  background: url(https://media.tenor.com/1y8zDc-ll-EAAAAd/3d-saul-saul-goodman.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 30%;
+}
+ 
+
+/*background-color: rgba 255, 234, 24, 0.9);*/
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+ 
+.better {
+    background-color: #EF2B2B;
+    width: 1250px;
+    display: flex;
+    flex-direction: column;
+    align-items: top;
+    justify-content: top;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 25px;
+    margin-bottom: 0%;
+    background-color: #EF2B2B;
+    font-size: calc(10px + 2vmin);
+    text-align: center;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
+}
+ 
+button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: rgb(255, 234, 24);
+    color: black;
+    text-shadow: 1px 1px #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+   
+button:hover {
+    background-color: #ECD808;
+}
+   
+.content {
+    color: #fff; /* Text color */
+    font-family: Arial, sans-serif; /* Font family */
+    font-size: 18px; /* Font size */
+    font-weight: bold; /* Font weight */
+    text-align: center; /* Text alignment */
+    text-shadow: 1px 1px 2px #000; /* Text shadow */
+    letter-spacing: 1px; /* Letter spacing */
+}

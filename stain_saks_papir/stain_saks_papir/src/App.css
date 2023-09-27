@@ -1,0 +1,210 @@
+body {
+  background-image: url(https://preview.redd.it/the-famous-wet-owl-also-known-as-lamont-appears-to-be-a-v0-0awtil7kynr81.jpg?width=750&format=pjpg&auto=webp&s=293b8103fdffd57e5ffa13c5a6f02795347061a8);
+  height: 100%;
+  
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.oppgavebox1{
+  background-color: rgba(58, 118, 9, 0.95);
+  text-shadow: 2px 2px 5px red;
+  min-width: 1223px;
+  border: solid white 1px;
+}
+
+
+
+h1 {
+  background-color: #61dafb;
+  text-shadow: 2px 2px 5px darkgreen;
+  min-height: 100px;
+  min-width: 1244px;
+  margin-top: auto;
+  margin-bottom: auto;
+  border: solid white 1px;
+  align-items: center;
+}
+
+.op2h1 {
+  background-color: #EA11C9;
+  text-shadow: 2px 2px 5px darkgreen;
+  min-height: 100px;
+  min-width: 1223px;
+  margin-top: auto;
+  margin-bottom: auto;
+  border: solid white 1px;
+  align-items: center;
+}
+
+
+.op2c1 {
+  background-color: #581845;
+  text-shadow: 2px 2px 5px #FFDC2D;
+  min-height: 100px;
+  min-width: 1223px;
+  margin-top: auto;
+  margin-bottom: auto;
+  border: solid white 1px;
+  align-items: center;
+}
+
+
+.op2c2 {
+  background-color: #EA1E11;
+  text-shadow: 2px 2px 5px #FFDC2D;
+  min-height: 100px;
+  min-width: 1223px;
+  margin-top: auto;
+  margin-bottom: auto;
+  border: solid white 1px;
+  align-items: center;
+}
+
+.oppgavebox2{
+  background-image: linear-gradient(to right, rgba(255,0,0,0.95) ,rgba(255,165,0,0.95));;
+  text-shadow: 2px 2px 5px red;
+  min-width: 1223px;
+  border: solid white 1px;
+}
+
+.oppgavebox3{
+  background-image: linear-gradient(to right, rgba(255,0,0,0.96),rgba(255, 165, 0, 0.96),rgba(255,255,0,0.96),rgba(0,128,0,0.96),	rgba(0,0,255,0.96),rgba(75,0,130,0.96),rgba(238,130,238,0.96));
+  text-shadow: 2px 2px 5px red;
+  min-width: 1223px;
+  border: solid white 1px;
+}
+
+.oppgavebox4{
+  background-image: url(https://i.pinimg.com/736x/42/4f/a0/424fa0924e05f7dc8c1995529073f551--gnomes-hats.jpg);
+  background-size: 100%;
+  opacity: 0.96;
+  background-position: center;
+  text-shadow: 2px 2px 5px red;
+  min-width: 1223px;
+  border: solid white 1px;
+}
+
+
+.op31 {
+  background-color: 	#FA8072;
+  text-shadow: 2px 2px 5px #797D7F;
+  min-height: 100px;
+  min-width: 1223px;
+  margin-top: auto;
+  margin-bottom: auto;
+  border: solid white 1px;
+  align-items: center;
+}
+
+.op32 {
+  background-color: 	#2DFF76;
+  text-shadow: 2px 2px 5px #797D7F;
+  min-height: 100px;
+  min-width: 1223px;
+  margin-top: auto;
+  margin-bottom: auto;
+  border: solid white 1px;
+  align-items: center;
+}
+
+
+input[type=submit] {
+  background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+  padding: 16px 32px;
+}
+
+
+.oppgave5{
+  background-color: 	#8300FF;
+  text-shadow: 2px 2px 5px #00FFB6;
+  min-height: 100px;
+  min-width: 1223px;
+  margin-top: auto;
+  margin-bottom: auto;
+  border: solid white 1px;
+  align-items: center;
+}
+
+.footer {
+  background-color: 	#5E7BFF;
+  text-shadow: 2px 2px 5px #00FFB6;
+  min-height: 60px;
+  min-width: 1223px;
+  margin-top: auto;
+  margin-bottom: auto;
+  border: solid white 1px;
+  align-items: center;
+}
+
+
+.oppgavebox6 {
+  background-image: linear-gradient(to right, rgba(0,255,66,0.9) ,rgba(0,182,255,0.9));
+  text-shadow: 2px 2px 5px red;
+  min-width: 1223px;
+  border: solid white 1px;
+}
+
+.col-xl-1 {
+  background-image: url(https://i.kym-cdn.com/editorials/icons/original/000/005/802/1.jpg);
+  opacity: 75%;
+  background-size: cover;
+  border: solid white 1px;
+  min-width: 1223px;
+  background-position: 5%;
+  background-position-y: 28%;
+}
+
+.op6{
+  background-color: 	#BD2D2D;
+  text-shadow: 2px 2px 5px #98BD2D;
+  min-height: 100px;
+  min-width: 1223px;
+  margin-top: auto;
+  margin-bottom: auto;
+  border: solid white 1px;
+  align-items: center;
+}
+
+
+.btn-outline-primary {
+  background-color: transparent;
+  border: none;
+}

@@ -1,0 +1,50 @@
+.oppgavebox5 {
+    background-image: linear-gradient(to right, rgba(255,0,0,0.96),rgba(255, 165, 0, 0.96),rgba(255,255,0,0.96),rgba(0,128,0,0.96),	rgba(0,0,255,0.96),rgba(75,0,130,0.96),rgba(238,130,238,0.96));
+  text-shadow: 2px 2px 5px red;
+  min-width: 1223px;
+  border: solid white 1px;
+}
+
+.Oppgave4 {
+    background-color: 	#FF2D50;
+  text-shadow: 2px 2px 5px #797D7F;
+  min-height: 100px;
+  min-width: 1223px;
+  margin-top: auto;
+  margin-bottom: auto;
+  border: solid white 1px;
+  align-items: center;
+}
+
+
+.container {
+    padding: 10px;
+    border: 2px solid whitesmoke;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    color: rgb(255, 255, 255);
+}
+ 
+
+.head {
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 20px
+}
+ 
+input {
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+ 
+input:hover {
+    background-color: rgb(158, 156, 152);
+}
+ 
+input:focus {
+    border: 0px;
+    background-color: beige;
+}
+
