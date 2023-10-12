@@ -47,7 +47,7 @@ export default function Home() {
       <div className='tresitteplasser'> 
       <Elev name='Axel'/>
         <Elev name='Vetle'/>
-        <Elev name='Keistoffer'/>
+        <Elev name='Kristoffer'/>
       </div>
 
       <div className='tresitteplasser'> 

@@ -9,12 +9,8 @@ export default function Elev(props){
 
 return (
     
-    if (props.name in list_of_srudent) {
-        <div className='elev' onClick={() => navigate(path)}> {name} </div>
-    } else {
-        don't do anything
-    }
-   
+   <div className='elev' onClick={() => navigate(path)}> {name} </div>
+  
 )
 
 
