@@ -1,3 +1,7 @@
+import Vugle from './vugle.jpg' 
+import L from './Elias L.jpg' 
+import PFP from './profile-image.png' 
+
 let Json = {
     "elever" : [
         {
@@ -33,7 +37,7 @@ let Json = {
             "alder" : "17",
             "email": "ahmad@viken.no",
             "Tlf": 90918728,
-            "image": "images/kc.png"
+            "image": L
         },
         {
             "navn" : "Kristoffer",
@@ -68,7 +72,7 @@ let Json = {
             "alder" : "17",
             "email": "ahmad@viken.no",
             "Tlf": 90918728,
-            "image": "images/profile-image.png"
+            "image": PFP
         },
         {
             "navn" : "Alva",
@@ -86,10 +90,10 @@ let Json = {
         },
         {
             "navn" : "Matheo",
-            "alder" : "17",
+            "alder" : "16",
             "email": "matheo@viken.no",
             "Tlf": 90918728,
-            "image": "images/vugle.jpg"
+            "image": Vugle
         },
         {
             "navn" : "Gabriel",
