@@ -94,5 +94,5 @@
 .profile-box {
   border: solid black 2px;
   background-color: #61dafb;
-  height: 50%;
+  height: fit-content;
 }

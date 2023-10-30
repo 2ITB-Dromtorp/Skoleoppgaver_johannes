@@ -1,6 +1,7 @@
 import Vugle from './vugle.jpg' 
 import L from './Elias L.jpg' 
 import PFP from './profile-image.png' 
+import Jeff from './Dhamer.png' 
 
 let Json = {
     "elever" : [
@@ -9,28 +10,28 @@ let Json = {
             "alder" : "17",
             "email": "andreask@viken.no",
             "Tlf": 90918378,
-            "image": "images/profile-image.png"
+            "image": PFP
         },
         {
             "navn" : "Ahmad",
             "alder" : "17",
             "email": "ahmad@viken.no",
             "Tlf": 90918728,
-            "image": "images/profile-image.png"
+            "image": PFP
         },
         {
             "navn" : "Philip",
             "alder" : "17",
             "email": "ahmad@viken.no",
             "Tlf": 90918728,
-            "image": "images/profile-image.png"
+            "image": PFP
         },
         {
             "navn" : "Johannes",
             "alder" : "17",
             "email": "ahmad@viken.no",
             "Tlf": 90918728,
-            "image": "images/profile-image.png"
+            "image": PFP
         },
         {
             "navn" : "Elias",
@@ -42,9 +43,9 @@ let Json = {
         {
             "navn" : "Kristoffer",
             "alder" : "17",
-            "email": "ahmad@viken.no",
+            "email": "Jeffdha@viken.no",
             "Tlf": 90918728,
-            "image": "images/profile-image.png"
+            "image": Jeff
         },
         {
             "navn" : "Vetle",
@@ -58,14 +59,14 @@ let Json = {
             "alder" : "17",
             "email": "ahmad@viken.no",
             "Tlf": 90918728,
-            "image": "images/profile-image.png"
+            "image": PFP
         },
         {
             "navn" : "Silas",
             "alder" : "17",
             "email": "ahmad@viken.no",
             "Tlf": 90918728,
-            "image": "images/profile-image.png"
+            "image": PFP
         },
         {
             "navn" : "Teodor",
@@ -79,7 +80,7 @@ let Json = {
             "alder" : "17",
             "email": "ahmad@viken.no",
             "Tlf": 90918728,
-            "image": "images/profile-image.png"
+            "image": PFP
         },
         {
             "navn" : "Mattis",
@@ -100,7 +101,7 @@ let Json = {
             "alder" : "17",
             "email": "ahmad@viken.no",
             "Tlf": 90918728,
-            "image": "images/profile-image.png"
+            "image": PFP
         },
 
       ]
