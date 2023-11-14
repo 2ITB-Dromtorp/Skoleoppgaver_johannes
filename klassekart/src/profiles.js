@@ -36,8 +36,8 @@ let Json = {
         {
             "navn" : "Elias",
             "alder" : "17",
-            "email": "ahmad@viken.no",
-            "Tlf": 90918728,
+            "email": "Eliasgod@viken.no",
+            "Tlf": 48473374,
             "image": L
         },
         {
@@ -92,8 +92,8 @@ let Json = {
         {
             "navn" : "Matheo",
             "alder" : "16",
-            "email": "matheo@viken.no",
-            "Tlf": 90918728,
+            "email": "matheop@viken.no",
+            "Tlf": 95010620,
             "image": Vugle
         },
         {
