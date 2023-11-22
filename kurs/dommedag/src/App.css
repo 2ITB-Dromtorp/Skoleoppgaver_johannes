@@ -1,3 +1,8 @@
+.body {
+  background-color: whitesmoke;
+}
+
+
 .App {
   text-align: center;
 }
@@ -36,11 +41,16 @@
 .login {
   max-width: 130px;
   max-height: 20px;
+ 
 }
 
 .login-image {
-  width: 50%; 
+  width: 5%; 
   height: auto; 
+  position: absolute;
+top: 0;
+bottom: 0;
+right: 0;
 }
 
 .App-link {
@@ -54,4 +64,99 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px;
+  color: black;
+}
+
+.popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+  border: solid 1px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+
+.boxes-container {
+  flex-direction: row;
+  justify-content: center;
+}
+
+.box1 {
+  width: 250px;
+  height: 150px;
+  padding: 10px;
+  border-radius: 15px;
+ text-align: center;
+ background-image: url(https://qph.cf2.quoracdn.net/main-qimg-56afad953648917723a4e5a6e66a5162.webp);
+background-size: cover;
+color: white;
+  border: 1px solid black;
+  margin: 0;
+}
+
+.box2 {
+  width: 250px;
+  height: 150px;
+  padding: 10px;
+  border-radius: 15px;
+ text-align: center;
+ background-image: url(https://media.snl.no/media/8374/standard_norges_flagg.png);
+background-size: cover;
+color: black;
+  border: 1px solid black;
+  margin: 0;
+}
+
+.box3 {
+  width: 250px;
+  height: 150px;
+  padding: 10px;
+  border-radius: 15px;
+ text-align: center;
+ background-image: url(https://idenyt-viivilla.imgix.net/sites/3/2021/12/kjokkentriks-til-matlagingen.jpg);
+background-size: cover;
+color: white;
+  border: 1px solid black;
+  margin: 0;
+}
+
+.box4 {
+  width: 250px;
+  height: 150px;
+  padding: 10px;
+  border-radius: 15px;
+ text-align: center;
+ background-image: url(https://image.utdanningsnytt.no/325654.webp?imageId=325654&x=0.00&y=0.00&cropw=100.00&croph=85.47&width=974&height=558&format=jpg);
+background-size: cover;
+color: black;
+  border: 1px solid black;
+  margin: 0;
+}
+
+.boxrow {
+  flex-direction: row; 
+  
 }
