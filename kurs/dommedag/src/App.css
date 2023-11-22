@@ -13,15 +13,34 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.top-bar {
+  background-color: #3498DB;
   color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.logo {
+  max-width: 175px;
+  max-height: 75px;
+}
+
+.logo-image {
+  width: 100%; 
+  height: auto; 
+}
+
+.login {
+  max-width: 130px;
+  max-height: 20px;
+}
+
+.login-image {
+  width: 50%; 
+  height: auto; 
 }
 
 .App-link {
