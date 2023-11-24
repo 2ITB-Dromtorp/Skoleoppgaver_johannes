@@ -1,7 +1,4 @@
-// Popup.js
-
 import React from 'react';
-import './App.css'; // Import the CSS file for styling
 
 const Popup = ({ onClose, content }) => {
   return (

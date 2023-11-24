@@ -2,6 +2,10 @@
   background-color: whitesmoke;
 }
 
+h3 {
+ text-shadow: white 5px;
+}
+
 
 .App {
   text-align: center;
@@ -73,7 +77,7 @@ right: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  background: rgba(0, 0, 0, 0.5); 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -83,6 +87,7 @@ right: 0;
 
 .popup-content {
   background: white;
+  max-width: 500px;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -105,21 +110,21 @@ right: 0;
 }
 
 .box1 {
-  width: 250px;
-  height: 150px;
+  width: 275px;
+  height: 175px;
   padding: 10px;
   border-radius: 15px;
  text-align: center;
- background-image: url(https://qph.cf2.quoracdn.net/main-qimg-56afad953648917723a4e5a6e66a5162.webp);
+ background-image: url(https://helpdeskgeek.com/wp-content/pictures/2021/09/3-retro-gaming-PC.jpg);
 background-size: cover;
-color: white;
+color: black;
   border: 1px solid black;
-  margin: 0;
+  margin-right: 10px;
 }
 
 .box2 {
-  width: 250px;
-  height: 150px;
+  width: 275px;
+  height: 175px;
   padding: 10px;
   border-radius: 15px;
  text-align: center;
@@ -131,32 +136,41 @@ color: black;
 }
 
 .box3 {
-  width: 250px;
-  height: 150px;
+  width: 275px;
+  height: 175px;
   padding: 10px;
   border-radius: 15px;
  text-align: center;
- background-image: url(https://idenyt-viivilla.imgix.net/sites/3/2021/12/kjokkentriks-til-matlagingen.jpg);
+ background-image: url(https://media.istockphoto.com/id/1215986146/photo/happy-senior-couple-talking-while-cooking-and-using-touchpad-in-the-kitchen.jpg?s=612x612&w=0&k=20&c=C8RdXSlEjh2XtgJxE5m2jYDbiWkbhHuAKNbyzPmzF5M=);
 background-size: cover;
-color: white;
+color: black;
   border: 1px solid black;
-  margin: 0;
+  margin-right: 10px;
 }
 
 .box4 {
-  width: 250px;
-  height: 150px;
+  
+  width: 275px;
+  height: 175px;
   padding: 10px;
   border-radius: 15px;
  text-align: center;
- background-image: url(https://image.utdanningsnytt.no/325654.webp?imageId=325654&x=0.00&y=0.00&cropw=100.00&croph=85.47&width=974&height=558&format=jpg);
+ background-image: url(https://everbrookseniorliving.com/media/k2/items/cache/184b7cb84d7b456c96a0bdfbbeaa5f14_XL.jpg);
 background-size: cover;
 color: black;
   border: 1px solid black;
   margin: 0;
 }
 
-.boxrow {
-  flex-direction: row; 
+.boxrow1 { 
+  display: flex;
+  justify-content: center;
+  margin-top: 55px;
+  margin-bottom: 10px;
   
+}
+
+.boxrow2 { 
+  display: flex;
+  justify-content: center;
 }
