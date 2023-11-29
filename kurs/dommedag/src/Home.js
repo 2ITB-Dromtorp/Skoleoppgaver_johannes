@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import './App.css';
 import Popup from './Popup';
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 
 
 
@@ -17,6 +17,8 @@ const Home = () => {
     const [isBox3PopupVisible, setIsBox3PopupVisible] = useState(false);
     const [isBox4PopupVisible, setIsBox4PopupVisible] = useState(false);
     const [isSignInPopupVisible, setIsSignInPopupVisible] = useState(false);
+
+
 
     const openSignInPopup = () => {
         setIsSignInPopupVisible(true);

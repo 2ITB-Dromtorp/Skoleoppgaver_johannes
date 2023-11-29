@@ -7,6 +7,8 @@ h3 {
 }
 
 
+
+
 .App {
   text-align: center;
 }
@@ -27,7 +29,6 @@ h3 {
   color: white;
   padding: 10px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   flex-direction: row;
 }
@@ -35,6 +36,7 @@ h3 {
 .logo {
   max-width: 175px;
   max-height: 75px;
+  margin-right: auto;
 }
 
 .logo-image {
@@ -42,10 +44,16 @@ h3 {
   height: auto; 
 }
 
-.login {
-  max-width: 130px;
-  max-height: 20px;
- 
+#login_form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 100px auto 0 auto;
+  box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 16px;
+  padding: 16px;
+  max-width: 300px;
+  
 }
 
 .login-image {
@@ -141,7 +149,7 @@ color: black;
   padding: 10px;
   border-radius: 15px;
  text-align: center;
- background-image: url(https://media.istockphoto.com/id/1215986146/photo/happy-senior-couple-talking-while-cooking-and-using-touchpad-in-the-kitchen.jpg?s=612x612&w=0&k=20&c=C8RdXSlEjh2XtgJxE5m2jYDbiWkbhHuAKNbyzPmzF5M=);
+ background-image: url(https://www.ageukmobility.co.uk/media/cache/default_859/upload/e6/72/e672e24eff62a4233db947ffee61694abe29192b.jpeg);
 background-size: cover;
 color: black;
   border: 1px solid black;
@@ -174,3 +182,40 @@ color: black;
   display: flex;
   justify-content: center;
 }
+
+button {
+  --c:  #229091; 
+  
+  box-shadow: 0 0 0 .1em inset var(--c); 
+  --_g: linear-gradient(var(--c) 0 0) no-repeat;
+  background: 
+    var(--_g) calc(var(--_p,0%) - 100%) 0%,
+    var(--_g) calc(200% - var(--_p,0%)) 0%,
+    var(--_g) calc(var(--_p,0%) - 100%) 100%,
+    var(--_g) calc(200% - var(--_p,0%)) 100%;
+  background-size: 50.5% calc(var(--_p,0%)/2 + .5%);
+  outline-offset: .1em;
+  transition: background-size .4s, background-position 0s .4s;
+}
+button:hover {
+  --_p: 100%;
+  transition: background-position .4s, background-size 0s;
+}
+
+button:active {
+  box-shadow: 0 0 9e9q inset #0009; 
+  background-color: var(--c);
+  color: #fff;
+}
+
+button {
+  font-family: system-ui, sans-serif;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: .0em .6em;
+  font-weight: bold;  
+  border: none;
+    
+}
+
+

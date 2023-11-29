@@ -1,11 +1,15 @@
 import './Kurs.css';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
 export default function GDK() {
 
-    const navigate = useNavigate();
+    const navigate = useNavigate()
+    const [Kurs, setKurs] = useState("Meld meg på")
+ function confirmSignUp() {
     
+ }
     return (
         <div className='B'>
         <div className='L'>
@@ -61,7 +65,7 @@ Interaktive forelesninger.
 Praktiske øvelser for å styrke ferdighetene.
 Mulighet for spørsmål og diskusjon.
 Varighet og Tidsplan:
-Kurset vil gå over en periode på [antall uker/måneder]. Klasser vil bli holdt [ukentlig/månedlig], og hver økt vil være [antall timer] lang.<br></br><br></br>
+Kurset vil gå over en periode på 1 uke. Klasser vil bli holdt en gang, og hver økt vil være 2 timmer lang.<br></br><br></br>
 
 Forutsetninger:
 Ingen spesifikke forutsetninger kreves. Dette kurset er åpent for alle med en grunnleggende forståelse av hvordan man bruker en datamaskin.<br></br><br></br>
@@ -73,6 +77,11 @@ Vi ser frem til å hjelpe deg med å utforske den digitale verdenen og bygge sel
 
 
 </p>
+
+<button id="myButton" onClick={(e) => {
+                    setKurs("du kan ikke melde deg av")
+                }}>{Kurs}</button>
+
         <button class="button" onClick={() => navigate(-1)}>Tilbake til hovedmeny</button>
         </div>
         </div>
