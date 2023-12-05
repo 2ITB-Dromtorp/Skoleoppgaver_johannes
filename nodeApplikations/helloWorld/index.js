@@ -1,11 +1,12 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 3002
 var mysql      = require('mysql');
 
 var connection = mysql.createConnection({
   host: 'localhost',
   port: '3306',
+  user: 'root',
   password: 'root',
   database: 'dromtorp'
 });
@@ -22,15 +23,31 @@ connection.connect(
 }
 
 );
-
+app.get('/', (req, res) => {
 connection.query('SELECT * FROM elev', function (error, results, fields) {
   if (error) throw error;
-  console.log('The solution is: ', results);
+  console.log(results)
+  res.send(JSON.stringify(results));
 });
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+
+ 
 })
+
+app.get("updateuser/:newhobby/:Id", (req, res) => {
+
+  let newhobby = req.params.id;
+  console.log(newhobby);
+  let sqlquery = 'UPDATE elev SET hobby='+newhobby' WHERE ElevID='+id;
+
+  connection.query(sqlquery, function (error, results, fields) {
+    if (error) throw error;
+    console.log(results)
+    res.send(JSON.stringify(results));
+  });
+res.send('plz work');
+})
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
