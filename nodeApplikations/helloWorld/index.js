@@ -26,6 +26,7 @@ connection.connect(
 app.get('/', (req, res) => {
 connection.query('SELECT * FROM elev', function (error, results, fields) {
   if (error) throw error;
+  
   console.log(results)
   res.send(JSON.stringify(results));
 });
@@ -38,7 +39,7 @@ app.get("updateuser/:newhobby/:Id", (req, res) => {
 
   let newhobby = req.params.id;
   console.log(newhobby);
-  let sqlquery = 'UPDATE elev SET hobby='+newhobby' WHERE ElevID='+id;
+  let sqlquery = 'UPDATE elev SET hobby='+newhobby+' WHERE ElevID='+id;
 
   connection.query(sqlquery, function (error, results, fields) {
     if (error) throw error;
