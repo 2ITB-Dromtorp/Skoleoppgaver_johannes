@@ -18,7 +18,7 @@
   align-items: center;
   width: 100%;
   height: 10vh;
-  background-color: #d87093;
+  background-color: #2ECC71;
   color: white; 
   position: sticky;
   top: 0;
@@ -46,7 +46,7 @@
 button{
   width: 10%;	
   height: 80%;
-  background-color: #d87093;
+  background-color: #28B463;
   color: white;
   border: solid pink 1px;
 }

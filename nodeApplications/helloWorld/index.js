@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 3002
+const port = 81
 var mysql      = require('mysql');
 var cors = require('cors')
 
@@ -38,7 +38,7 @@ connection.query('SELECT * FROM elev', function (error, results, fields) {
  
 })
 
-app.get("updateuser/:newhobby/:Id", (req, res) => {
+app.get("updateuser/:newhobby/:ElevId", (req, res) => {
 
   let newhobby = req.params.id;
   console.log(newhobby);
