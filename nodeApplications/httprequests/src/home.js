@@ -22,9 +22,6 @@ export default function Home() {
    setContent(<Update />);
  }
 
- function placeContentDelete() {
-   setContent(<Select />);
- }
 
 
   return (
@@ -33,7 +30,6 @@ export default function Home() {
         <button className='button' onClick={placeContentSelect}>Select</button>
         <button className='button' onClick={placeContentUpdate}>Update</button>
         <button className='button' onClick={placeContentInsert}>Insert</button>
-        <button className='button' onClick={placeContentDelete}>Delete</button>
       </div>
       <div className='requestContainer'>
         {content}

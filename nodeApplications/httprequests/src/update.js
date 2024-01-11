@@ -1,63 +1,57 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
-import './table_style.css';
+import { useState, useEffect } from "react";
+export default function Update() {
 
-export default function Select() {
-    const [elevData, setElevData] = useState([]);
-    const [newRow, setNewRow] = useState({
-        ElevID: '',
-        Fornavn: '',
-        Etternavn: '',
-        DatamaskinID: '',
-        Hobby: '',
-        Klasse: '',
-        Kjonn: '',
-    });
+    const [updateElevData, setUpdateElvData] = useState([])
+    const [elevId, setElevId] = useState("")
+    const [fornavn, setFornavn] = useState("")
+    const [etternavn, setEtternavn] = useState("")
+    const [hobby, setHobby] = useState("");
+    const [datamaskinId, setDatamaskinId] = useState("");
+    const [klasse, setKlasse] = useState("");
+    const [kjonn, setKjonn] = useState("");
 
-    useEffect(() => {
-        getElevData();
-    }, []);
+    function handleSubmit(event) {
 
-    const getElevData = () => {
-        axios
-            .get("http://localhost:81/")
-            .then(response => {
-                setElevData(response.data);
-            })
-            .catch(error => console.log(error));
-    };
+        event.preventDefault();
+        console.log('submitted');
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setNewRow(prevRow => ({ ...prevRow, [name]: value }));
-    };
+       
 
-
-    const updateHobby = (newHobby, elevId) => {
-        axios
-            .get(`http://localhost:81/updateuser/${newHobby}/${elevId}`)
-            .then(response => {
-                console.log(response.data);
-                // You might want to update the state or perform other actions after the update
-            })
-            .catch(error => console.log(error));
-    };
+        const updateElevDatarequest = () => {
+            axios
+                .get(`http://localhost:81/updateuser/${elevId}/${fornavn}/${etternavn}/${datamaskinId}/${hobby}/${klasse}/${kjonn}/`)
+                .then(response => {
+                    setUpdateElvData(response.data);
+                })
+                .catch(error => console.log(error));
+        };
+        updateElevDatarequest();
+        console.log(updateElevData);
+    }
 
     return (
         <>
-            <div className="table-container">
-                <table className="styled-table">
-                    {/* ... (unchanged part of the table) */}
-                </table>
-            </div>
-            {/* Display the new row form */}
-            
-            {/* Display the update hobby form */}
-            <div>
-                <input type="text" name="ElevIDToUpdate" placeholder="ElevID to Update" />
-                <input type="text" name="NewHobby" placeholder="New Hobby" />
-                <button onClick={() => updateHobby(newRow.Hobby, newRow.ElevID)}>Update Hobby</button>
-            </div>
+        <form onSubmit={handleSubmit}>
+        <label>ElevID</label>
+            <input type="number" value={elevId} onChange={e => setElevId(e.target.value)}/>
+         <label>nyt Fornavn:</label>
+            <input type="text" value={fornavn} onChange={e => setFornavn(e.target.value)}/>
+         <label>nyt Etternavn: </label>
+            <input type="text" value={etternavn} onChange={e => setEtternavn(e.target.value)}/>
+        <label>Ny hobby: </label>
+            <input type="text" value={hobby} onChange={e => setHobby(e.target.value)} placeholder="hobby"/>
+         <label>Datamasikn ID: </label>
+            <input type="number" value={datamaskinId} onChange={e => setDatamaskinId(e.target.value)}/>
+         <label>Klasse: </label>
+            <input type="number" value={klasse} onChange={e => setKlasse(e.target.value)}/>
+         <label>Kjønn: </label>
+            <input type="text" value={kjonn} onChange={e => setKjonn(e.target.value)}/>
+            <input type="submit" value="Submit"/>
+        </form>
+
         </>
-    );
+        
+
+    )
 }
