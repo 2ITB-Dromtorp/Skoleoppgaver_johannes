@@ -39,6 +39,7 @@ export default function Create() {
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit}>
+        <h2>Insert</h2>
         <label>Nytt Fornavn:</label>
         <input
           type="text"

@@ -40,6 +40,7 @@ export default function Update() {
         <>
             <div class="form-container">
                 <form onSubmit={handleSubmit}>
+                    <h2>Update</h2>
                     <label>ElevID</label>
                     <input type="number" value={elevId} onChange={e => setElevId(e.target.value)} placeholder="ElevID" />
                     <label>nyt Fornavn:</label>
