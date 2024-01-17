@@ -50,3 +50,41 @@ button{
   color: white;
   border: solid pink 1px;
 }
+
+.form-container {
+  max-height: 400px;
+  overflow: auto;
+  width: 100%;
+  border: 15px;
+  padding: 50px;
+  margin: 20px;
+}
+
+
+form {
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+label {
+  display: block;
+  margin-top: 50px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+input[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
