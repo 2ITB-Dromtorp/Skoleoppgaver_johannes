@@ -1,0 +1,9 @@
+
+{
+    "initialState": {
+      "password": "BBOP",
+      "username": "Astolfo",
+      "email": "BBOP@gmail.com",
+      "showPassword": false
+    }
+  }
