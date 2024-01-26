@@ -1,10 +1,10 @@
 const express = require('express')
 const app = express()
 var cors = require("cors")
-const port = 3000
+const port = process.env.PORT || 3000
 
 app.use(express.json())
-
+app.use(express.static('build'))
 app.use(cors())
 
 brukere = [
@@ -17,11 +17,6 @@ brukere = [
         password: "sussy2",
     }
 ]
-
-// respond with "hello world" when a GET request is made to the homepage
-app.get('/', (req, res) => {
-  res.send('hello world')
-})
 
 app.post("/login", (req, res) =>{
 
@@ -44,3 +39,7 @@ app.post("/login", (req, res) =>{
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
   })
+
+app.get('*', (req, res) =>{
+    res.sendFile('build')
+})
