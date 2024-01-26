@@ -37,6 +37,7 @@ export default function Login() {
           <label>Brukernavn</label>
           <div>
             <input
+            className="Astolfo"
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
@@ -55,6 +56,7 @@ export default function Login() {
           <label>Passord</label>
           <div>
             <input
+            className="BBOP"
               type={showPassword ? "text" : "password"}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
