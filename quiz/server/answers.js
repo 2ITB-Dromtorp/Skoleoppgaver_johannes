@@ -12,7 +12,7 @@ let json = {
       {
         "question": "Hva er en Internet kabel?",
         "options": ["Ethernet", "RJ45 kabel", "🤡🤡🤡🤡😭😭😭🤡😭", "Kabel undervann"],
-        "correct_answer": "Mars"
+        "correct_answer": "Kabel undervann"
       },
       {
         "question": "Who wrote 'Romeo and Juliet'?",
