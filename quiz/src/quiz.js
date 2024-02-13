@@ -10,7 +10,7 @@ const Quiz = () => {
   const [timer, setTimer] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:3000/0')
+    fetch(`http://localhost:3000/${currentQuestion}`)
       .then((response) => response.json())
       .then((data) => {
         setQuizData(data);
@@ -20,7 +20,7 @@ const Quiz = () => {
         }
       })
       .catch((error) => console.error('Error fetching quiz data:', error));
-  }, []);
+  }, [currentQuestion]);
 
   useEffect(() => {
     // Check for end of quiz
