@@ -1,10 +1,12 @@
 const express = require('express')
 const app = express()
-const port = 81
 var mysql = require('mysql');
 var cors = require('cors')
+const port = process.env.PORT || 81
+
 
 app.use(cors())
+app.use(express.static('build'))
 
 var connection = mysql.createConnection({
   host: 'localhost',
@@ -85,4 +87,9 @@ app.post("/createuser", (request, response) => {
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
+})
+
+
+app.get('*', (req, res) =>{
+  res.sendFile('build')
 })
