@@ -6,51 +6,58 @@ const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
-  const [timeRemaining, setTimeRemaining] = useState(60); // Initial countdown time
-  const [timer, setTimer] = useState(null);
+  const [timer, setTimer] = useState(60); // Initial timer value in seconds
 
   useEffect(() => {
-    fetch(`http://localhost:3000/${currentQuestion}`)
-      .then((response) => response.json())
-      .then((data) => {
+    const fetchQuizData = async () => {
+      try {
+        const response = await fetch(`http://localhost:3000/${currentQuestion}`);
+        const data = await response.json();
         setQuizData(data);
-        // Initialize timer only when quiz data is received
-        if (data && data.options) {
-          setTimer(setInterval(updateTimer, 1000));
-        }
-      })
-      .catch((error) => console.error('Error fetching quiz data:', error));
+      } catch (error) {
+        console.error('Error fetching quiz data:', error);
+      }
+    };
+
+    fetchQuizData();
   }, [currentQuestion]);
 
   useEffect(() => {
-    // Check for end of quiz
-    if (currentQuestion ===  - 1 && !showResult) {
-      setShowResult(true);
-      clearInterval(timer);
-    }
-  }, [currentQuestion, quizData, showResult, timer]);
+    if (quizData && quizData.options) {
+      const intervalId = setInterval(() => {
+        setTimer((prevTimer) => {
+          if (prevTimer === 0) {
+            clearInterval(intervalId);
+            alert('Time is up! Quiz failed.');
+            setShowResult(true);
+            return 0;
+          }
+          return prevTimer - 1;
+        });
+      }, 1000);
 
-  const updateTimer = () => {
-    setTimeRemaining((prevTime) => {
-      if (prevTime === 0) {
-        clearInterval(timer);
-        alert('Time is up! Quiz failed.');
-        setShowResult(true);
-      }
-      return prevTime > 0 ? prevTime - 1 : prevTime;
-    });
-  };
+      return () => {
+        clearInterval(intervalId);
+      };
+    }
+  }, [quizData]);
+
+  useEffect(() => {
+    // Check for end of quiz
+    if (currentQuestion === quizData?.options.length && !showResult) {
+      setShowResult(true);
+    }
+  }, [currentQuestion, quizData, showResult]);
 
   const handleAnswerClick = (selectedOption) => {
     if (selectedOption === quizData.correct_answer) {
-      setScore(score + 1);
+      setScore((prevScore) => prevScore + 1);
     }
 
     if (currentQuestion < quizData.options.length - 1) {
-      setCurrentQuestion(currentQuestion + 1);
+      setCurrentQuestion((prevQuestion) => prevQuestion + 1);
     } else {
       setShowResult(true);
-      clearInterval(timer);
     }
   };
 
@@ -58,9 +65,7 @@ const Quiz = () => {
     setCurrentQuestion(0);
     setScore(0);
     setShowResult(false);
-    setTimeRemaining(60);
-    // Restart timer when resetting quiz
-    setTimer(setInterval(updateTimer, 1000));
+    setTimer(60);
   };
 
   return (
@@ -77,6 +82,10 @@ const Quiz = () => {
         <div className="question-container">
           <h2>Question {currentQuestion + 1}</h2>
           <p>{quizData.question}</p>
+
+          {/* Display the timer */}
+          <p>Time Remaining: {timer} seconds</p>
+
           <ul className="options-container">
             {quizData.options.map((option, index) => (
               <li key={index} onClick={() => handleAnswerClick(option)}>
