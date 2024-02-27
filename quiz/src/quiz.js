@@ -6,12 +6,12 @@ const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
-  const [timer, setTimer] = useState(60); // Initial timer value in seconds
+  const [timer, setTimer] = useState(30); // hvor mange seksunder man har
 
   useEffect(() => {
     const fetchQuizData = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/${currentQuestion}`);
+        const response = await fetch(`/${currentQuestion}`);
         const data = await response.json();
         setQuizData(data);
       } catch (error) {
@@ -28,13 +28,19 @@ const Quiz = () => {
         setTimer((prevTimer) => {
           if (prevTimer === 0) {
             clearInterval(intervalId);
-            alert('Time is up! Quiz failed.');
-            setShowResult(true);
+            setTimeout(() => {
+              alert('Time is up! Quiz failed.');
+              setShowResult(true);
+              // Reload siden 2 sec etter timeren går ut
+              setTimeout(() => {
+                window.location.reload();
+              }, 500);
+            }, 100); // vis allerten i 2 sec før reload
             return 0;
           }
           return prevTimer - 1;
         });
-      }, 1000);
+      }, 1000); //hvor for den teller neds
 
       return () => {
         clearInterval(intervalId);
@@ -43,7 +49,7 @@ const Quiz = () => {
   }, [quizData]);
 
   useEffect(() => {
-    // Check for end of quiz
+    // Check om quizen er ferdig
     if (currentQuestion === quizData?.options.length && !showResult) {
       setShowResult(true);
     }
@@ -65,7 +71,7 @@ const Quiz = () => {
     setCurrentQuestion(0);
     setScore(0);
     setShowResult(false);
-    setTimer(60);
+    setTimer(30); // Reset timeren
   };
 
   return (
@@ -83,7 +89,7 @@ const Quiz = () => {
           <h2>Question {currentQuestion + 1}</h2>
           <p>{quizData.question}</p>
 
-          {/* Display the timer */}
+          {/* Display timeren */}
           <p>Time Remaining: {timer} seconds</p>
 
           <ul className="options-container">

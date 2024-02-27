@@ -5,7 +5,7 @@ let json = {
     "title": "General Knowledge Quiz",
     "questions": [
       {
-        "question": "liker Henin og cooke",
+        "question": "liker Henning og cooke",
         "options": ["Ja", "Nei (han hater cooke bøker)", "vet ikke", "Han mekker"],
         "correct_answer": "Nei (han hater cooke bøker)"
       },
@@ -15,14 +15,14 @@ let json = {
         "correct_answer": "Kabel undervann"
       },
       {
-        "question": "Who wrote 'Romeo and Juliet'?",
-        "options": ["William Shakespeare", "Jane Austen", "Charles Dickens", "Mark Twain"],
-        "correct_answer": "William Shakespeare"
+        "question": "er react et kodespråk eller et library framework?",
+        "options": ["Ja", "Nei", "code", "lirary framework"],
+        "correct_answer": "lirary framework"
       },
       {
-        "question": "What is the largest mammal in the world?",
-        "options": ["Elephant", "Blue Whale", "Giraffe", "Hippopotamus"],
-        "correct_answer": "Blue Whale"
+        "question": "hva er drift?",
+        "options": ["il kjøring", "nettverk,vmer", "spisepinner dipet i soyasaus", "når joysticken tweaker"],
+        "correct_answer": "nettverk,vmerss"
       }
     ]
   }
