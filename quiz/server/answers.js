@@ -22,7 +22,7 @@ let json = {
       {
         "question": "hva er drift?",
         "options": ["il kjøring", "nettverk,vmer", "spisepinner dipet i soyasaus", "når joysticken tweaker"],
-        "correct_answer": "nettverk,vmerss"
+        "correct_answer": "nettverk,vmer"
       }
     ]
   }
