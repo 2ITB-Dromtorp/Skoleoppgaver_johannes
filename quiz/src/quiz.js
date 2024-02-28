@@ -40,7 +40,7 @@ const Quiz = () => {
           }
           return prevTimer - 1;
         });
-      }, 1000); //hvor for den teller neds
+      }, 1000); //hvor fort den teller neds
 
       return () => {
         clearInterval(intervalId);
