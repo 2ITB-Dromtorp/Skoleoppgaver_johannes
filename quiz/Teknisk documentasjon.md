@@ -220,7 +220,7 @@ For å integrere cors i ditt Node.js-prosjekt, bruk følgende kommando i termina
 
 
 # funksjonalitet
-Cors er en hacks
+Cors er en hack
 
 
 
@@ -297,26 +297,14 @@ opdatterer en verdi uten og opdattere siden
 
 ## spesal thanks
 
-node
-https://nodejs.org/en
 
 
-git bash
-https://gitforwindows.org
-
-
-npm express
-https://www.npmjs.com/package/express
-
-
-npm cors
-https://www.npmjs.com/package/cors
-
-
-Vetle fongen, github Frikk2015
-hjalp med mulighet.no filstandar
-
-
-Ahmad Murtaza Zahid, github Wanted1231232
-quiz spørsmol
+| Navn  | lenke |
+| ------------- | ------------- |
+| node  | https://nodejs.org/en  |
+|  Git Bash | https://gitforwindows.org  |
+| NPM express  | https://www.npmjs.com/package/express  |
+| npm cors  | https://www.npmjs.com/package/cors  |
+| Vetle fongen, github Frikk2015  | hjalp med mulighet.no filstandar  |
+| Ahmad Murtaza Zahid, github Wanted1231232  | quiz spørsmol  |
 
