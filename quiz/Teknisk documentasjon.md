@@ -177,7 +177,7 @@ Viser ulike deler av JSX basert på tilstanden til quizen (lasting, resultat ell
 # instalasjon
 For å komme i gang, må du sørge for at Node.js og NPM er installert på systemet ditt. Deretter kan du opprette et nytt prosjekt og installere Express ved å kjøre følgende kommando i terminalen (express er installert i server mappen (backend)):
 
-    npm install Express
+  | npm install Express |
 
 
 #  eksempel
@@ -206,7 +206,8 @@ jeg bruker express for og lagge en enkel node server
 
 For å integrere cors i ditt Node.js-prosjekt, bruk følgende kommando i terminalen:
 
-    npm install cors
+  | npm install cors |
+    
 
 # eksempel
 
