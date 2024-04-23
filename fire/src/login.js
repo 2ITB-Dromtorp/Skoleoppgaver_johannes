@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import config from "./config.json";
 import "./Login.css"; // Import the CSS file
+import "./App.css"; // nudvendig for en eller aen grund, tulete
 
 export default function Login() {
   const navigate = useNavigate();

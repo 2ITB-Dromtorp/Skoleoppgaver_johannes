@@ -4,10 +4,10 @@
 
 
 # Avhengigheter
-    express: Et minimalistisk og fleksibelt Node.js web-rammeverk.
+    express: Et enkelt Node.js web-rammeverk.
     node:path: Node.js-modul for å jobbe med filsystemstier.
     ./answers: En lokal JSON-fil som inneholder spørsmål og svar.
-    cors: Middleware for Express som gir Cross-Origin Resource Sharing (CORS)-støtte.
+    cors: hack.
 
 
     # serverconfig 
