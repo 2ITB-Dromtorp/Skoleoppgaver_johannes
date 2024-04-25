@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const mysql = require('mysql');
 const cors = require('cors');
+const bcrypt = require('bcrypt');
 const port = process.env.PORT || 81;
 
 app.use(cors());
@@ -24,6 +25,41 @@ connection.connect(function (err) {
   console.log('connected as id ' + connection.threadId);
 });
 
+// Authenticate user
+app.post('/login', (req, res) => {
+  const { username, password } = req.body;
+
+  // Check if username exists in the database
+  connection.query(
+    'SELECT * FROM users WHERE username = ?',
+    [username],
+    async (error, results) => {
+      if (error) {
+        res.status(500).json({ error: 'Internal Server Error' });
+      } else {
+        if (results.length > 0) {
+          // User found, compare hashed password
+          const hashedPassword = results[0].password;
+          try {
+            if (await bcrypt.compare(password, hashedPassword)) {
+              // Passwords match, authentication successful
+              res.json({ message: 'Login successful' });
+            } else {
+              // Passwords don't match
+              res.status(401).json({ error: 'Invalid password' });
+            }
+          } catch (err) {
+            res.status(500).json({ error: 'Internal Server Error' });
+          }
+        } else {
+          // User not found
+          res.status(404).json({ error: 'User not found' });
+        }
+      }
+    }
+  );
+});
+
 // Get all equipment
 app.get('/equipment', (req, res) => {
   connection.query('SELECT * FROM utstyrstype', (error, results) => {
@@ -42,7 +78,7 @@ app.post('/borrow', (req, res) => {
 
   // Check if the equipment is available to borrow (not already borrowed)
   connection.query(
-    'SELECT * FROM utstyr WHERE utstyrsid = ? AND utlanttilelev IS NULL',
+    'SELECT * FROM utstyr WHERE utstyrsid = ?',
     [utstyrsid],
     (error, results) => {
       if (error) throw error;
@@ -53,8 +89,9 @@ app.post('/borrow', (req, res) => {
         // Update the equipment record with borrower information
         connection.query(
           'INSERT INTO utstyr (utlanttilelev, dato, utstyrstype) VALUES (?, ?, ?)',
-          [utlanttilelev, dato, utstyrstype],
+          [parseInt(utlanttilelev), dato, parseInt(utstyrsid)],
           (insertError, insertResults) => {
+            console.log("HIJDKJKJKDKJD")
             if (insertError) throw insertError;
             res.send('Equipment borrowed successfully.');
           }
@@ -82,5 +119,3 @@ app.post('/return', (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-
-
