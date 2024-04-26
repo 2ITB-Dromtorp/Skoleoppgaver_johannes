@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './App.css'; 
+import './App.css';
 
 function Home() {
   const [equipment, setEquipment] = useState([]);
@@ -13,6 +13,7 @@ function Home() {
   const [returnFormData, setReturnFormData] = useState({
     utstyrsid: ''
   });
+  const [notification, setNotification] = useState(null); // Notification state
 
   const fetchEquipment = async () => {
     try {
@@ -37,6 +38,10 @@ function Home() {
     try {
       await axios.post('http://localhost:81/borrow', borrowFormData);
       fetchEquipment(); // Refresh equipment list after borrowing
+      setNotification('Equipment borrowed successfully!');
+      setTimeout(() => {
+        setNotification(null); // Clear notification after some time
+      }, 3000); // Clear notification after 3 seconds
     } catch (error) {
       console.error('Error borrowing equipment:', error);
     }
@@ -47,6 +52,10 @@ function Home() {
     try {
       await axios.post('http://localhost:81/return', returnFormData);
       fetchEquipment(); // Refresh equipment list after returning
+      setNotification('Equipment returned successfully!');
+      setTimeout(() => {
+        setNotification(null); // Clear notification after some time
+      }, 3000); // Clear notification after 3 seconds
     } catch (error) {
       console.error('Error returning equipment:', error);
     }
@@ -129,6 +138,9 @@ function Home() {
           </tbody>
         </table>
       </form>
+
+      {/* Notification Pop-up */}
+      {notification && <div className="notification">{notification}</div>}
 
       {/* Display Equipment List */}
       <h2>Available Equipment</h2>

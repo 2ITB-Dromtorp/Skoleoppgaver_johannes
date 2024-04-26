@@ -107,10 +107,14 @@ app.post('/return', (req, res) => {
 
   // Update the equipment record to mark it as returned (remove borrower information)
   connection.query(
-    'UPDATE utstyr SET utlanttilelev = NULL, dato = NULL WHERE utstyrsid = ?',
+    'DELETE FROM utstyr WHERE utstyrsid = ?',
     [utstyrsid],
     (error, results) => {
       if (error) throw error;
+      // connection.query('SELECT * FROM utstyr', (err, restwo) =>{
+      //   if (err) throw err;
+      //   res.send({"utstyr":restwo});
+      // })
       res.send('Equipment returned successfully.');
     }
   );
