@@ -9,7 +9,8 @@ function Register() {
   const [klasseId, setKlasseId] = useState('');
   const [tlf, setTlf] = useState('');
   const [tlfP, setTlfP] = useState('');
-  const [password, setPassword] = useState('');
+  const [Brukernavn, setBrukernavn] = useState('');
+  const [Passord, setPassord] = useState('');
   const [message, setMessage] = useState('');
 
   const handleElevIdChange = (e) => setElevId(e.target.value);
@@ -18,7 +19,8 @@ function Register() {
   const handleKlasseIdChange = (e) => setKlasseId(e.target.value);
   const handleTlfChange = (e) => setTlf(e.target.value);
   const handleTlfPChange = (e) => setTlfP(e.target.value);
-  const handlePasswordChange = (e) => setPassword(e.target.value);
+  const handleBrukernavnChange = (e) => setBrukernavn(e.target.value);
+  const handlePassordChange = (e) => setPassord(e.target.value);
 
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
@@ -30,7 +32,8 @@ function Register() {
         klasseId,
         tlf,
         tlfP,
-        password
+        Brukernavn,
+        Passord
       });
       if (response.status === 201) {
         setMessage('User registered successfully');
@@ -41,7 +44,8 @@ function Register() {
         setKlasseId('');
         setTlf('');
         setTlfP('');
-        setPassword('');
+        setBrukernavn('');
+        setPassord('');
       } else {
         setMessage('Failed to register user');
       }
@@ -81,14 +85,16 @@ function Register() {
           <input type="text" value={tlfP} onChange={handleTlfPChange} required />
         </div>
         <div>
-          <label>Password:</label>
-          <input type="password" value={password} onChange={handlePasswordChange} required />
+          <label>Brukernavn:</label>
+          <input type="text" value={Brukernavn} onChange={handleBrukernavnChange} required />
+        </div>
+        <div>
+          <label>Passord:</label>
+          <input type="password" value={Passord} onChange={handlePassordChange} required />
         </div>
         <button type="submit">Register</button>
         {message && <p>{message}</p>}
-        <Link to="/">
-          <button type="button">Login</button>
-        </Link>
+        <p>Already have an account? <Link to="/login">Login here</Link></p>
       </form>
     </div>
   );

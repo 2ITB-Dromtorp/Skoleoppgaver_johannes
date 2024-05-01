@@ -17,9 +17,9 @@ function Home() {
 
   const fetchEquipment = async () => {
     try {
-      const response = await axios.get('http://localhost:81/equipment');
-      setEquipment(response.data.utstyrtype);
-      setEquipmentThatIsBorrowed(response.data.utstyr);
+      const response = await axios.get('/equipment');
+      setEquipment(response.data.utstyrtype); // Assuming the data structure has changed
+      setEquipmentThatIsBorrowed(response.data.borrowedEquipment); // Assuming the data structure has changed
     } catch (error) {
       console.error('Error fetching equipment:', error);
     }
@@ -36,7 +36,7 @@ function Home() {
   const handleBorrowSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:81/borrow', borrowFormData);
+      await axios.post('/borrow', borrowFormData);
       fetchEquipment(); // Refresh equipment list after borrowing
       setNotification('Equipment borrowed successfully!');
       setTimeout(() => {
@@ -50,7 +50,7 @@ function Home() {
   const handleReturnSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:81/return', returnFormData);
+      await axios.post('/return', returnFormData);
       fetchEquipment(); // Refresh equipment list after returning
       setNotification('Equipment returned successfully!');
       setTimeout(() => {
@@ -78,8 +78,8 @@ function Home() {
               <td>
                 <select name="utstyrsid" onChange={handleBorrowInputChange} required>
                   <option value="">Select Equipment</option>
-                  {equipment.map((item) => (
-                    <option key={item.utstyrstypeID} value={item.utstyrstypeID}>
+                  {equipment && equipment.map((item) => (
+                    <option key={item.utstyrsid} value={item.utstyrsid}>
                       {item.Modell}
                     </option>
                   ))}
@@ -112,56 +112,54 @@ function Home() {
           </tbody>
         </table>
       </form>
+{/* Return Equipment Form */}
+<form onSubmit={handleReturnSubmit}>
+  <h2>Return Equipment</h2>
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <select name="utstyrsid" onChange={handleReturnInputChange} required>
+            <option value="">Select Equipment</option>
+            {equipmentThatIsBorrowed && equipmentThatIsBorrowed.map((item) => (
+              <option key={item.utstyrsid} value={item.utstyrsid}>
+                {item.utstyrsid} - {item.Modell} (Borrowed by ElevID: {item.utlanttilelev})
+              </option>
+            ))}
+          </select>
+        </td>
+        <td>
+          <button type="submit">Return</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>
 
-      {/* Return Equipment Form */}
-      <form onSubmit={handleReturnSubmit}>
-        <h2>Return Equipment</h2>
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                <select name="utstyrsid" onChange={handleReturnInputChange} required>
-                  <option value="">Select Equipment</option>
-                  {equipmentThatIsBorrowed
-                    .filter((item) => item.utlanttilelev !== null)
-                    .map((item) => (
-                      <option key={item.utstyrsid} value={item.utstyrsid}>
-                        {item.utstyrstype} (Borrowed by Student ID: {item.utlanttilelev})
-                      </option>
-                    ))}
-                </select>
-              </td>
-              <td>
-                <button type="submit">Return</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </form>
 
       {/* Notification Pop-up */}
       {notification && <div className="notification">{notification}</div>}
 
       {/* Display Equipment List */}
-      <h2>Available Equipment</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Equipment ID</th>
-            <th>Model</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-           {equipment.map((item) => (
-            <tr key={item.utstyrstypeID} className={equipmentThatIsBorrowed.find((a) => a.utstyrstype === item.utstyrstypeID) ? 'borrowed' : 'available'}>
-              <td>{item.utstyrstypeID}</td>
-              <td>{item.Modell}</td>
-              <td>{equipmentThatIsBorrowed.find((a) => a.utstyrstype === item.utstyrstypeID) ? 'Borrowed' : 'Available'}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+<h2>Available Equipment</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Equipment ID</th>
+      <th>Modell</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+     {equipment && equipment.map((item) => (
+      <tr key={item.utstyrsid} className={equipmentThatIsBorrowed.find((a) => a.utstyrsid === item.utstyrsid) ? 'borrowed' : 'available'}>
+        <td>{item.utstyrsid}</td>
+        <td>{item.Modell}</td>
+        <td>{equipmentThatIsBorrowed.find((a) => a.utstyrsid === item.utstyrsid) ? 'Borrowed' : 'Available'}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
     </div>
   );
 }

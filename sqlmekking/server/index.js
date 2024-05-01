@@ -4,7 +4,7 @@ const mysql = require('mysql');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
 const port = process.env.PORT || 81;
-
+const saltrounds = 10;
 app.use(cors());
 app.use(express.static('build'));
 app.use(express.json());
@@ -25,48 +25,69 @@ connection.connect(function (err) {
   console.log('connected as id ' + connection.threadId);
 });
 
-// Authenticate user
-app.post('/login', (req, res) => {
-  const { username, password } = req.body;
-
-  // Check if username exists in the database
-  connection.query(
-    'SELECT * FROM users WHERE username = ?',
-    [username],
-    async (error, results) => {
+// Utility function to promisify queries
+const queryAsync = (connection, sql, values) => {
+  return new Promise((resolve, reject) => {
+    connection.query(sql, values, (error, results) => {
       if (error) {
-        res.status(500).json({ error: 'Internal Server Error' });
+        reject(error);
       } else {
-        if (results.length > 0) {
-          // User found, compare hashed password
-          const hashedPassword = results[0].password;
-          try {
-            if (await bcrypt.compare(password, hashedPassword)) {
-              // Passwords match, authentication successful
-              res.json({ message: 'Login successful' });
-            } else {
-              // Passwords don't match
-              res.status(401).json({ error: 'Invalid password' });
-            }
-          } catch (err) {
-            res.status(500).json({ error: 'Internal Server Error' });
-          }
-        } else {
-          // User not found
-          res.status(404).json({ error: 'User not found' });
-        }
+        resolve(results);
       }
+    });
+  });
+};
+
+app.get("/jomfru", async (req, res) => {
+  const hashed = await bcrypt.hash("Johannes kan ikke lese", saltrounds)
+  console.log(hashed)
+});
+
+// Authenticate user
+app.post('/login', async (req, res) => {
+  const { username, password } = req.body;
+  console.log("Du er jomfru")
+  try {
+    // Check if username exists in the database
+    const query = 'SELECT * FROM elevtabell WHERE Brukernavn = ?';
+    const results = await queryAsync(connection, query, [username]);
+
+    if (results.length === 0) {
+      return res.status(404).json({ error: 'User not found' });
     }
-  );
+    console.log(results[0])
+    const hashedPassword = results[0].Passord;
+
+    // Compare hashed password
+    if (await bcrypt.compare(password, hashedPassword)) {
+      // Passwords match, authentication successful
+      res.status(200).json({ message: 'Login successful' });
+    } else {
+      // Passwords don't match
+      res.status(401).json({ error: 'Invalid password' });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 });
 
 // Get all equipment
 app.get('/equipment', (req, res) => {
-  connection.query('SELECT * FROM utstyrstype', (error, results) => {
-    if (error) throw error;
-    connection.query('SELECT * FROM utstyr', (err, restwo) =>{
-      if (err) throw err;
-      res.send({"utstyrtype":results, "utstyr":restwo});
+  const query = `
+    SELECT *
+    FROM utstyrstype`;
+  connection.query(query, (error, results) => {
+    if (error) {
+      console.error(error);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+    connection.query("SELECT * from utstyr", (utErr, utRes) => {
+      if (utErr) {
+        console.error(utErr);
+        return res.status(500).json({ utErr: 'Internal Server Error' });
+      }
+      res.json({ "utstyrtype": results, "borrowedEquipment":utRes});
     })
   });
 });
@@ -74,50 +95,32 @@ app.get('/equipment', (req, res) => {
 // Borrow equipment
 app.post('/borrow', (req, res) => {
   const { utstyrsid, utlanttilelev, dato } = req.body;
-  console.log(utstyrsid, utlanttilelev, dato)
+  console.log("ChatGPT skrev dette, gi Johannes en 3");
 
-  // Check if the equipment is available to borrow (not already borrowed)
-  connection.query(
-    'SELECT * FROM utstyr WHERE utstyrsid = ?',
-    [utstyrsid],
-    (error, results) => {
-      if (error) throw error;
-
-      if (results.length) {
-        res.status(400).send('Equipment not available for borrowing.');
-      } else {
-        // Update the equipment record with borrower information
-        connection.query(
-          'INSERT INTO utstyr (utlanttilelev, dato, utstyrstype) VALUES (?, ?, ?)',
-          [parseInt(utlanttilelev), dato, parseInt(utstyrsid)],
-          (insertError, insertResults) => {
-            console.log("HIJDKJKJKDKJD")
-            if (insertError) throw insertError;
-            res.send('Equipment borrowed successfully.');
-          }
-        );
-      }
+  // Update the equipment record with borrower information
+  const insertQuery = 'INSERT INTO utstyr (utstyrsid, utlanttilelev, dato) VALUES (?, ?, ?)';
+  connection.query(insertQuery, [parseInt(utstyrsid), parseInt(utlanttilelev), dato], (insertError, insertResults) => {
+    if (insertError) {
+      console.error(insertError);
+      return res.status(500).json({ error: 'Internal Server Error' });
     }
-  );
+    res.send('Equipment borrowed successfully.');
+  });
 });
 
 // Return borrowed equipment
 app.post('/return', (req, res) => {
   const { utstyrsid } = req.body;
 
-  // Update the equipment record to mark it as returned (remove borrower information)
-  connection.query(
-    'DELETE FROM utstyr WHERE utstyrsid = ?',
-    [utstyrsid],
-    (error, results) => {
-      if (error) throw error;
-      // connection.query('SELECT * FROM utstyr', (err, restwo) =>{
-      //   if (err) throw err;
-      //   res.send({"utstyr":restwo});
-      // })
-      res.send('Equipment returned successfully.');
+  // Delete the equipment record to mark it as returned
+  const deleteQuery = 'DELETE FROM utstyr WHERE utstyrsid = ?';
+  connection.query(deleteQuery, [utstyrsid], (error, results) => {
+    if (error) {
+      console.error(error);
+      return res.status(500).json({ error: 'Internal Server Error' });
     }
-  );
+    res.send('Equipment returned successfully.');
+  });
 });
 
 app.listen(port, () => {

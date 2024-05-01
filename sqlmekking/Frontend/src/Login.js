@@ -1,105 +1,64 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import './App.css';
 
-function Login({ onLogin }) {
-  const [ElevID, setElevID] = useState('');
-  const [Fornavn, setFornavn] = useState('');
-  const [Etternavn, setEtternavn] = useState('');
-  const [KlasseID, setKlasseID] = useState('');
-  const [TLF, setTLF] = useState('');
-  const [TLF_P, setTLFP] = useState('');
+function App() {
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+    const navigate = useNavigate()
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-  const handleElevIDChange = (e) => {
-    setElevID(e.target.value);
-  };
-
-  const handleFornavnChange = (e) => {
-    setFornavn(e.target.value);
-  };
-
-  const handleEtternavnChange = (e) => {
-    setEtternavn(e.target.value);
-  };
-
-  const handleKlasseIDChange = (e) => {
-    setKlasseID(e.target.value);
-  };
-
-  const handleTLFChange = (e) => {
-    setTLF(e.target.value);
-  };
-
-  const handleTLFPChange = (e) => {
-    setTLFP(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleLoginSubmit = async (e) => {
-    e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3001/login', {
-        ElevID,
-        Fornavn,
-        Etternavn,
-        KlasseID,
-        TLF,
-        TLF_P,
-        password
+      const response = await fetch('/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, password })
       });
-      if (response.status === 200) {
-        onLogin(); // Notify parent component (App) of successful login
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert(data.message); // Successful login
+        navigate("/home")
+        
       } else {
-        console.error('Login failed:', response.data.message);
+        setErrorMessage(data.error); // Display error message
       }
     } catch (error) {
-      console.error('Login failed:', error);
+      console.error('Error:', error);
+      setErrorMessage('An error occurred. Please try again later.');
     }
   };
 
   return (
-    <div className="Login">
-      <h1>Login</h1>
-      <form onSubmit={handleLoginSubmit}>
-        <div>
-          <label>ElevID:</label>
-          <input type="text" value={ElevID} onChange={handleElevIDChange} required />
-        </div>
-        <div>
-          <label>Fornavn:</label>
-          <input type="text" value={Fornavn} onChange={handleFornavnChange} required />
-        </div>
-        <div>
-          <label>Etternavn:</label>
-          <input type="text" value={Etternavn} onChange={handleEtternavnChange} required />
-        </div>
-        <div>
-          <label>KlasseID:</label>
-          <input type="text" value={KlasseID} onChange={handleKlasseIDChange} required />
-        </div>
-        <div>
-          <label>TLF:</label>
-          <input type="text" value={TLF} onChange={handleTLFChange} required />
-        </div>
-        <div>
-          <label>TLF_P:</label>
-          <input type="text" value={TLF_P} onChange={handleTLFPChange} required />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input type="password" value={password} onChange={handlePasswordChange} required />
-        </div>
-        <button type="submit">Login</button>
-        <Link to="/register">
-          <button type="button">Register</button>
-        </Link>
-      </form>
+    <div className="App">
+      <div className="login-container">
+        <h2>Login</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <input type="submit" value="Login" />
+        </form>
+        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+      </div>
     </div>
   );
 }
 
-export default Login;
+export default App;
