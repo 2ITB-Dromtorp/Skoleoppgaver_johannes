@@ -6,7 +6,8 @@ function App() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-    const navigate = useNavigate()
+  const navigate = useNavigate();
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -23,8 +24,7 @@ function App() {
 
       if (response.ok) {
         alert(data.message); // Successful login
-        navigate("/home")
-        
+        navigate("/home");
       } else {
         setErrorMessage(data.error); // Display error message
       }
@@ -56,6 +56,7 @@ function App() {
           <input type="submit" value="Login" />
         </form>
         {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+        <button onClick={() => navigate('/register')}>Register</button>
       </div>
     </div>
   );

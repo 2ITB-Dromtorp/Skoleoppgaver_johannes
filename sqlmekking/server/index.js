@@ -5,6 +5,7 @@ const cors = require('cors');
 const bcrypt = require('bcrypt');
 const port = process.env.PORT || 81;
 const saltrounds = 10;
+
 app.use(cors());
 app.use(express.static('build'));
 app.use(express.json());
@@ -38,9 +39,23 @@ const queryAsync = (connection, sql, values) => {
   });
 };
 
-app.get("/jomfru", async (req, res) => {
-  const hashed = await bcrypt.hash("Johannes kan ikke lese", saltrounds)
-  console.log(hashed)
+// Register new user
+app.post('/register', async (req, res) => {
+  const { elevId, fornavn, eternavn, klasseId, tlf, tlfP, brukernavn, passord } = req.body;
+
+  try {
+    // Hash the password before storing it in the database
+    const hashedPassword = await bcrypt.hash(passord, saltrounds);
+
+    // Insert the new user into the elevtabell table
+    const insertQuery = 'INSERT INTO elevtabell (ElevID, Fornavn, Eternavn, KlasseID, TLF, TLF_P, Brukernavn, Passord) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+    await queryAsync(connection, insertQuery, [elevId, fornavn, eternavn, klasseId, tlf, tlfP, brukernavn, hashedPassword]);
+
+    res.status(201).json({ message: 'User registered successfully' });
+  } catch (error) {
+    console.error('Registration failed:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 });
 
 // Authenticate user

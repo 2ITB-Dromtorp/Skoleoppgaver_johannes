@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './App.css';
 import { Link } from 'react-router-dom';
 
 function Register() {
@@ -9,8 +10,8 @@ function Register() {
   const [klasseId, setKlasseId] = useState('');
   const [tlf, setTlf] = useState('');
   const [tlfP, setTlfP] = useState('');
-  const [Brukernavn, setBrukernavn] = useState('');
-  const [Passord, setPassord] = useState('');
+  const [brukernavn, setBrukernavn] = useState('');
+  const [passord, setPassord] = useState('');
   const [message, setMessage] = useState('');
 
   const handleElevIdChange = (e) => setElevId(e.target.value);
@@ -25,15 +26,15 @@ function Register() {
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3001/register', {
+      const response = await axios.post('http://localhost:3000/register', {
         elevId,
         fornavn,
         eternavn,
         klasseId,
         tlf,
         tlfP,
-        Brukernavn,
-        Passord
+        brukernavn,
+        passord
       });
       if (response.status === 201) {
         setMessage('User registered successfully');
@@ -56,45 +57,45 @@ function Register() {
   };
 
   return (
-    <div className="Register">
+    <div className="register">
       <h1>Register</h1>
       <form onSubmit={handleRegisterSubmit}>
         {/* Input fields for all required data */}
         <div>
-          <label>ElevID:</label>
-          <input type="text" value={elevId} onChange={handleElevIdChange} required />
+          <label htmlFor="elevId">ElevID:</label>
+          <input type="text" id="elevId" placeholder="Enter ElevID" value={elevId} onChange={handleElevIdChange} required />
         </div>
         <div>
-          <label>Fornavn:</label>
-          <input type="text" value={fornavn} onChange={handleFornavnChange} required />
+          <label htmlFor="fornavn">Fornavn:</label>
+          <input type="text" id="fornavn" placeholder="Enter Fornavn" value={fornavn} onChange={handleFornavnChange} required />
         </div>
         <div>
-          <label>Eternavn:</label>
-          <input type="text" value={eternavn} onChange={handleEternavnChange} required />
+          <label htmlFor="eternavn">Eternavn:</label>
+          <input type="text" id="eternavn" placeholder="Enter Eternavn" value={eternavn} onChange={handleEternavnChange} required />
         </div>
         <div>
-          <label>KlasseID:</label>
-          <input type="text" value={klasseId} onChange={handleKlasseIdChange} required />
+          <label htmlFor="klasseId">KlasseID:</label>
+          <input type="text" id="klasseId" placeholder="Enter KlasseID" value={klasseId} onChange={handleKlasseIdChange} required />
         </div>
         <div>
-          <label>TLF:</label>
-          <input type="text" value={tlf} onChange={handleTlfChange} required />
+          <label htmlFor="tlf">TLF:</label>
+          <input type="text" id="tlf" placeholder="Enter TLF" value={tlf} onChange={handleTlfChange} required />
         </div>
         <div>
-          <label>TLF_P:</label>
-          <input type="text" value={tlfP} onChange={handleTlfPChange} required />
+          <label htmlFor="tlfP">TLF_P:</label>
+          <input type="text" id="tlfP" placeholder="Enter TLF_P" value={tlfP} onChange={handleTlfPChange} required />
         </div>
         <div>
-          <label>Brukernavn:</label>
-          <input type="text" value={Brukernavn} onChange={handleBrukernavnChange} required />
+          <label htmlFor="brukernavn">Brukernavn:</label>
+          <input type="text" id="brukernavn" placeholder="Enter Brukernavn" value={brukernavn} onChange={handleBrukernavnChange} required />
         </div>
         <div>
-          <label>Passord:</label>
-          <input type="password" value={Passord} onChange={handlePassordChange} required />
+          <label htmlFor="passord">Passord:</label>
+          <input type="password" id="passord" placeholder="Enter Passord" value={passord} onChange={handlePassordChange} required />
         </div>
         <button type="submit">Register</button>
         {message && <p>{message}</p>}
-        <p>Already have an account? <Link to="/login">Login here</Link></p>
+        <p>Already have an account? <Link to="/">Login here</Link></p>
       </form>
     </div>
   );
