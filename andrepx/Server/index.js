@@ -35,7 +35,7 @@ app.get('/produkter', (req, res) => {
 // Route to decrease stock for a specific product
 app.put('/kjop', (req, res) => {
     console.log(req.body);
-    let sql = `UPDATE Katinfo SET mengde_igjen = mengde_igjen - 1 WHERE id = ? AND Mengde_igjen > 0`;
+    let sql = `UPDATE Katinfo SET mengde_igjen = mengde_igjen - 1 WHERE id = ? AND mengde_igjen > 0`;
     db.query(sql, [req.body.id], (err, result) => {
         if (err) throw err;
         res.send(result);
@@ -43,11 +43,9 @@ app.put('/kjop', (req, res) => {
 });
 
 // Route to increase stock for a specific product
-app.put('/increaseStock/:id', (req, res) => {
-    const { id } = req.params;
-    const { amount } = req.body;
-    let sql = `UPDATE Katinfo SET mengde_igjen = mengde_igjen + ? WHERE id = ?`;
-    db.query(sql, [amount, id], (err, result) => {
+app.put('/increaseStock', (req, res) => {
+    let sql = `UPDATE Katinfo SET mengde_igjen = mengde_igjen + 1 WHERE id = ?`;
+    db.query(sql, [req.body.id], (err, result) => {
         if (err) throw err;
         res.send(result);
     });

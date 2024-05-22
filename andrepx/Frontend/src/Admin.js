@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const AdminPage = () => {
+function App() {
     const [produkter, setProdukter] = useState([]);
-    const [amount, setAmount] = useState(0);
 
     useEffect(() => {
         fetchProdukter();
@@ -11,36 +10,38 @@ const AdminPage = () => {
 
     const fetchProdukter = async () => {
         try {
-            const res = await axios.get('http://localhost:3100/admin/products');
+            const res = await axios.get('http://localhost:3100/produkter');
+            console.log(res.data);
             setProdukter(res.data);
         } catch (error) {
             console.error('Error fetching products:', error);
         }
     };
 
-    const increaseStock = async (id) => {
+    const kjopProdukt = async (id) => {
+      console.log(id)
         try {
-            await axios.put(`http://localhost:3100/increaseStock/${id}`, {
-                amount: amount
+            await axios.put(`http://localhost:3100/increaseStock`, {
+              id:id
             });
-            fetchProdukter(); // Update the table after increasing stock
+            fetchProdukter(); // Oppdater tabellen etter kjøp
         } catch (error) {
-            console.error('Error increasing stock:', error);
+            console.error('Error purchasing product:', error);
         }
     };
 
     return (
         <div>
-            <h1>Admin Page</h1>
-            <h2>Products</h2>
+            <h1>Admin</h1>
+            <h2>Produkter</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>Category</th>
-                        <th>Name</th>
-                        <th>Stock</th>
-                        <th>Price</th>
-                        <th>Actions</th>
+                        <th>Katigori</th>
+                        <th>Navn</th>
+                        <th>Mengde igjen</th>
+                        <th>Pris</th>
+                        <th>Handling</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -51,8 +52,7 @@ const AdminPage = () => {
                             <td>{produkt.mengde_igjen}</td>
                             <td>{produkt.Pris}</td>
                             <td>
-                                <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} />
-                                <button onClick={() => increaseStock(produkt.id)}>Increase Stock</button>
+                                <button onClick={() => kjopProdukt(produkt.id)}>restock</button>
                             </td>
                         </tr>
                     ))}
@@ -60,6 +60,6 @@ const AdminPage = () => {
             </table>
         </div>
     );
-};
+}
 
-export default AdminPage;
+export default App;
