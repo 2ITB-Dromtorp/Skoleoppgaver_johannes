@@ -32,9 +32,10 @@ app.get('/produkter', (req, res) => {
     });
 });
 
-app.delete('/produkter/:id', (req, res) => {
-    let sql = `DELETE FROM Katinfo WHERE id = ${req.params.id}`;
-    db.query(sql, (err, result) => {
+app.put('/kjop', (req, res) => {
+  console.log(req.body)
+    let sql = `UPDATE Katinfo SET mengde_igjen = mengde_igjen - 1 WHERE id = ? AND Mengde_igjen > 0`;
+    db.query(sql, [req.body.id], (err, result) => {
         if (err) throw err;
         res.send(result);
     });

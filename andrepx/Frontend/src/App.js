@@ -11,35 +11,53 @@ function App() {
     const fetchProdukter = async () => {
         try {
             const res = await axios.get('http://localhost:3100/produkter');
-            console.log(res.data)
+            console.log(res.data);
             setProdukter(res.data);
         } catch (error) {
             console.error('Error fetching products:', error);
         }
     };
 
-    const deleteProdukt = async (id) => {
+    const kjopProdukt = async (id) => {
+      console.log(id)
         try {
-            await axios.delete(`http://localhost:3100/produkter/${id}`);
-            fetchProdukter();
+            await axios.put(`http://localhost:3100/kjop`, {
+              id:id
+            });
+            fetchProdukter(); // Oppdater tabellen etter kjøp
         } catch (error) {
-            console.error('Error deleting product:', error);
+            console.error('Error purchasing product:', error);
         }
     };
 
     return (
         <div>
             <h1>Kantine Administrasjon</h1>
-
             <h2>Produkter</h2>
-            <ul>
-                {produkter.map(produkt => (
-                    <li key={produkt.id}>
-                        {produkt.Katigori} - {produkt.Navn} - {produkt.mengde_igjen} igjen - {produkt.Pris} NOK
-                        <button onClick={() => deleteProdukt(produkt.id)}>Slett</button>
-                    </li>
-                ))}
-            </ul>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Katigori</th>
+                        <th>Navn</th>
+                        <th>Mengde igjen</th>
+                        <th>Pris</th>
+                        <th>Handling</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {produkter.map(produkt => (
+                        <tr key={produkt.id}>
+                            <td>{produkt.Katigori}</td>
+                            <td>{produkt.Navn}</td>
+                            <td>{produkt.mengde_igjen}</td>
+                            <td>{produkt.Pris}</td>
+                            <td>
+                                <button onClick={() => kjopProdukt(produkt.id)}>Kjøp</button>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     );
 }
